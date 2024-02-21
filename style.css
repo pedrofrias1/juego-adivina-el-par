@@ -39,9 +39,32 @@ li:hover{
     font-size: 1.2rem;
 }
 
-/* carta de espada */
+/* imagenes de la cartas */
 .espada{
     background-image: url(./img/espada.png);
-    color: rgba(34, 54, 236, 0.989);
-    
+    color: rgba(34, 54, 236, 0.989); 
 }
+.oro{
+    background-image: url(./img/oro.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: gold;
+}
+.copa{
+    background-image: url(./img/copa.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: red;
+}
+.basto{
+    background-image: url(./img/basto.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: green;
+}
+
+.contenedor-cartas{
+    display: flex;
+    margin: 10px;
+}
+
