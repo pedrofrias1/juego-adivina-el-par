@@ -1,0 +1,47 @@
+/* general */
+body{
+    background-color: #82ef12;
+}
+
+/* espaciado dentro de la carta */
+ul{
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+li:hover{
+    color: #fff;
+}
+
+/* posiciones de la carta */
+.valores{
+    display: flex;
+    justify-content: space-between;
+}
+.valorArriba, .paloArriba{
+    margin: 0px 5px 0px 5px;
+    
+}
+.valorAbajo{
+    margin: 0px 5px 0px 5px;
+}
+
+/* diseño de la carta. */
+.cartas{
+    width: 200px;
+    height: 220px;
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 8px; 
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* carta de espada */
+.espada{
+    background-image: url(./img/espada.png);
+    color: rgba(34, 54, 236, 0.989);
+    
+}
