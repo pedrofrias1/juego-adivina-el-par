@@ -1,81 +1,103 @@
-// llamo al html los valores de las cartas.
-let cartas = document.querySelector(".cartas");
-let paloArriba = document.querySelector(".paloArriba");
-let numeros = document.querySelector(".numeros");
+// inicialización.
+let tarjetasDestapadas = 0;
+let tarjeta1=null;
+let tarjeta2=null;
+let primerResultado=null;
+let segundoResultado=null;
+let movimientos=0;
+let aciertos=0;
+let temporizador=false;
+let time=0;
 
 
+// console.log(dia);
 
-// let paloAbajo = document.querySelector(".paloAbajo")
+//document html
+const mostarMovimientos=document.getElementById("movimientos");
+const acertados=document.getElementById("aciertos");
+const timer=document.getElementById("tiempo");
 
+// generador de numeros.
+let numeros = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+//numeros aleatorios.
+numeros = numeros.sort(()=> {return Math.random()-0.5});
 
-// valores y cartas .
-let palo = ["espada","basto","oro","copa"]
-let numero = ["1" , "2" , "3" , "4" , "5" , "6" , "7" , "10" , "11" , "12" ];
-const totalCards=3;
-let cards=[];
-
-
-// let palos={
-//     espada:Math.floor(Math.random()*numeros.length-0) + " de espada",
-//     basto:Math.floor(Math.random()*numeros.length)+" de basto",
-//     copa:Math.floor(Math.random()*numeros.length)+" de copa",
-//     oro:Math.floor(Math.random()*numeros.length)+" de oro",
-// }
-
-//generar la carta.
-const crearCarta=()=>{
-
-    let valorSimple=palo[Math.floor(Math.random()*palo.length)];
-    let simpleNumero=numero[Math.floor(Math.random()*numero.length)];
-    let enseñar= `${simpleNumero}  ${valorSimple}`;
-    let card=cartas.innerHTML= `<h4>${enseñar}</h4>`;
-
-    
-    
-     for (let i = 0; i < totalCards; i++) {
-        let carta = card;
-        cards.push(carta)
-        let nuevaCartas = document.createElement("div");
-        nuevaCartas.classList.add("cartas");
-        
-        nuevaCartas.innerHTML=`<h4>${enseñar}</h4>`;
-        
-        
-
-
-        console.log(nuevaCartas);
-            
-           
-            
-            
-
-            if (valorSimple==="espada"){
-                cartas.classList.add("espada")
-            }
-            if (valorSimple==="oro") {
-                cartas.classList.add("oro");
-            }
-            if (valorSimple==="basto") {
-                cartas.classList.add("basto");
-            }
-            if (valorSimple==="copa") {
-                cartas.classList.add("copa");
-            }
-
-        
-        
-
-    }
-    
-    
-
-
-    
-
-
-   
+//tiempo del juego
+function ContarTiempo(){
+  tiempoStart=setInterval(()=>{
+    time++
+    timer.innerHTML=`tiempo: ${time} segundos`
+  },1000)
 }
-crearCarta();
+
+// función principal.
+function DarVuelta(id) {
+ tarjetasDestapadas++;
+  
+ if (temporizador==false) {
+    ContarTiempo();
+    temporizador=true
+ }
+
+ 
+ 
+  //cantidad de tarjetas destapadas=1.
+  if(tarjetasDestapadas==1){
+    //incremento tarjeta.
+    tarjeta1=document.getElementById(id);
+    
+    primerResultado=numeros[id];
+    tarjeta1.innerHTML=primerResultado;
+
+    
+    
+    
+
+    //parar incremento.
+    tarjeta1.disabled=true;
+
+    //tarjetas destapadas=2.
+  }else if (tarjetasDestapadas== 2){
+    //2da tarjeta destapada
+    tarjeta2=document.getElementById(id);
+
+    segundoResultado=numeros[id];
+    tarjeta2.innerHTML=segundoResultado;
+    //parar incremento.
+    tarjeta2.ariaDisabled=true;
+
+    //si se destapan 2 se agrega un movimiento.
+    movimientos++;
+    mostarMovimientos.innerHTML=`movimientos: ${movimientos}`;
 
 
+    //tarjetas acertadas.
+    if (primerResultado==segundoResultado) {
+      tarjetasDestapadas=0
+
+      //aumentar aciertos
+      aciertos++;
+      acertados.innerHTML=`acertados: ${aciertos}`
+      //aciertos=8 -fin del juego
+      if(aciertos==8){
+        
+        clearInterval(tiempoStart)
+        acertados.innerHTML=`acertados: ${aciertos} :)`;
+        mostarMovimientos.innerHTML=`movimientos: ${movimientos} .)`;
+        
+        timer.innerHTML=`tiempo total ${time} segundos`
+       
+      }
+    }else{
+      //mostrar y tapar en un lapso de 1.7s.
+      setTimeout(()=>{
+        tarjeta1.innerHTML="";
+        tarjeta2.innerHTML="";
+        tarjeta1.disabled=false;
+        tarjeta2.disabled=false;
+        tarjetasDestapadas=0;
+      },1700);
+    }
+  }
+}
 

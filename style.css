@@ -1,70 +1,45 @@
-/* general */
-body{
-    background-color: #82ef12;
+#body{
+    background-color: #f8efed;
 }
-
-/* espaciado dentro de la carta */
-ul{
-    display: flex;
-    gap: 25px;
-    list-style: none;
-}
-li:hover{
-    color: #fff;
-}
-
-/* posiciones de la carta */
-.valores{
-    display: flex;
-    justify-content: space-between;
-}
-.valorArriba, .paloArriba{
-    margin: 0px 5px 0px 5px;
+.contadores{
+    width: 210px;
+    height: 200px;
+    background-color: #62a4aebc;
     
 }
-.valorAbajo{
-    margin: 0px 5px 0px 5px;
+.tarjeta-container{
+    display: grid;
+    grid-template-columns: repeat(4,110px);
+    grid-template-rows: repeat(4,110px);
+    gap: 10px;
 }
-
-/* diseño de la carta. */
-.cartas{
-    width: 200px;
-    height: 220px;
-    border: solid black 1px;
+.caja{
+    width: 15vh;
+    height: 15vh;
+    background: linear-gradient(135deg, #4E8698, #5955a5);
+    margin: 2px;
+   
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 8px; 
-    font-weight: 600;
-    font-size: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.caja:active{
+    background-color: #92858559;
 }
 
-/* imagenes de la cartas */
-.espada{
-    background-image: url(./img/espada.png);
-    color: rgba(34, 54, 236, 0.989); 
-}
-.oro{
-    background-image: url(./img/oro.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: gold;
-}
-.copa{
-    background-image: url(./img/copa.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: red;
-}
-.basto{
-    background-image: url(./img/basto.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: green;
-}
 
-.contenedor-cartas{
-    display: flex;
-    margin: 10px;
+/* modo oscuro */
+.fondo-negro{
+    background-color: rgba(0, 0, 0, 0.815) !important; 
 }
-
+.cajas{
+background: linear-gradient(135deg, #311041, #180c9f)!important;
+}
+.color{
+    color: #f8f5f5;
+}
+.contador{
+    background: linear-gradient(135deg, #62a4ae, #205961)!important;
+}
